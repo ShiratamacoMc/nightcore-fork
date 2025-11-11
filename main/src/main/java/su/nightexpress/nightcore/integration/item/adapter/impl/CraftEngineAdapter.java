@@ -20,7 +20,7 @@ public class CraftEngineAdapter extends IdentifiableItemAdapter {
     public ItemStack createItem(@NotNull String itemId) {
         Key key = Key.of(itemId);
         CustomItem<ItemStack> customItem = CraftEngineItems.byId(key);
-        return customItem == null ? null : customItem.build();
+        return customItem == null ? null : customItem.buildItemStack();
     }
 
     @Override
