@@ -24,8 +24,10 @@ public class ParserUtils {
     public static final char QUOTE       = '\'';
     public static final char DOUBLE_QUOTE  = '"';
 
+    @Deprecated
     private static final String[] LINE_SPLITTERS = {TagWrappers.BR, TagWrappers.NEWLINE};
 
+    @Deprecated
     public static String[] breakDownLineSplitters(@NotNull String string) {
         for (String alias : LINE_SPLITTERS) {
             string = string.replace(alias, "\n");
@@ -34,6 +36,7 @@ public class ParserUtils {
     }
 
     @NotNull
+    @Deprecated
     public static List<String> breakDownLineSplitters(@NotNull List<String> list) {
         List<String> segmented = new ArrayList<>();
 
@@ -69,11 +72,6 @@ public class ParserUtils {
                 continue;
             }
 
-            if (precede != null && letter == precede) {
-                preceded = true;
-                continue;
-            }
-
             if (!inDoubleQuotes && letter == '\'') {
                 inSingleQuotes = !inSingleQuotes;
                 continue;
@@ -82,6 +80,13 @@ public class ParserUtils {
             if (!inSingleQuotes && letter == '\"') {
                 inDoubleQuotes = !inDoubleQuotes;
                 continue;
+            }
+
+            if (!inSingleQuotes && !inDoubleQuotes) {
+                if (precede != null && letter == precede) {
+                    preceded = true;
+                    continue;
+                }
             }
 
             if (!inSingleQuotes && !inDoubleQuotes && letter == target) {
