@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ItemPlugins {
 
+    public static final String CRAFT_ENGINE     = "CraftEngine";
     public static final String EXECUTABLE_ITEMS = "ExecutableItems";
     public static final String EXCELLENT_CRATES = "ExcellentCrates";
     public static final String ITEMS_ADDER      = "ItemsAdder";
@@ -16,6 +17,6 @@ public class ItemPlugins {
 
     @NotNull
     public static List<String> values() {
-        return Lists.newList(EXCELLENT_CRATES, EXECUTABLE_ITEMS, ITEMS_ADDER, MMOITEMS, NEXO, ORAXEN);
+        return Lists.newList(CRAFT_ENGINE, EXCELLENT_CRATES, EXECUTABLE_ITEMS, ITEMS_ADDER, MMOITEMS, NEXO, ORAXEN);
     }
 }
